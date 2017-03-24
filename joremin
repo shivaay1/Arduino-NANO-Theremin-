@@ -1,0 +1,48 @@
+# Arduino-NANO-Theremin-
+Theremin with pitch control for musical education and enjoyment.
+int H = 3; /*Lautsprecher*/
+int Y = A3; /*Photo sensor*/
+int Xpoint;
+int NXpoint;
+float Ypoint;
+int NYpoint;
+int ifpinStat;
+float height;
+void setup() {
+
+	Serial.begin(9600);
+	pinMode (6, INPUT_PULLUP); 
+	pinMode (3,OUTPUT);
+	
+	}
+	
+void loop() {  
+
+	if(Xpoint <=160){
+  
+		digitalWrite(B, HIGH); 
+}else { 
+
+	digitalWrite(B, LOW);
+}
+	Xpoint = analogRead(X);
+	//Serial.println(Xpoint);
+	Ypoint=analogRead(Y);
+	//Serial.println(Ypoint);
+	
+	if (Ypoint < 700 && Ypoint > 150 ){  
+	tone(3, pow((Ypoint - 200),1.20)*2);  
+	Serial.println(height); 
+	Serial.println(Ypoint);
+	}else{  
+	tone(3, -10);
+}
+
+
+
+
+
+
+
+
+
